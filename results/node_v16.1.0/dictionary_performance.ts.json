@@ -1,0 +1,46 @@
+{
+  "name": "dictionary_performance.ts",
+  "lastRun": 1621375622814,
+  "results": [
+    {
+      "hash": "f421e4d45e8f7fc77916d01bcf532e66162b6407",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375622814,
+      "fastest": "dictionary#string key",
+      "suites": [
+        {
+          "name": "map#string key",
+          "period": 8.968570339562876e-10,
+          "frequency": 1115004913981.351,
+          "k": 1.0029988032253863
+        },
+        {
+          "name": "dictionary#string key",
+          "period": 8.941755773508662e-10,
+          "frequency": 1118348594313.7197,
+          "k": 1
+        },
+        {
+          "name": "null_proto_dictionary#string key",
+          "period": 8.929952389064981e-9,
+          "frequency": 111982679910.42514,
+          "k": 9.986799701599265
+        },
+        {
+          "name": "map#object key",
+          "period": 6.424749631060582e-9,
+          "frequency": 155648088629.86346,
+          "k": 7.185109718714192
+        },
+        {
+          "name": "weak_map#object key",
+          "period": 1.0503316209148837e-8,
+          "frequency": 95208025740.38066,
+          "k": 11.74636891813411
+        }
+      ]
+    }
+  ]
+}

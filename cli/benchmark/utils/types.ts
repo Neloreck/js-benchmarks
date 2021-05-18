@@ -15,13 +15,12 @@ export interface ISuiteDescriptor {
   suites: Array<ISuiteResult>;
 }
 
-export interface IBenchmarkResult {
-  name: string;
+export interface IBenchmarkResults {
   lastRun: number;
+  name: string;
   results: Array<ISuiteDescriptor>;
 }
 
-export interface IBenchmarkResults {
-  lastRun: number;
-  benchmarks: Record<string, IBenchmarkResult>;
+export interface ICliArguments {
+  save?: boolean;
 }

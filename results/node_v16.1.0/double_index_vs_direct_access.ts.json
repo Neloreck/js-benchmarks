@@ -1,0 +1,46 @@
+{
+  "name": "double_index_vs_direct_access.ts",
+  "lastRun": 1621375649994,
+  "results": [
+    {
+      "hash": "4eddfd1137b21a500802a593942b38a37c2d6fd4",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375649994,
+      "fastest": "access#double_dot_access",
+      "suites": [
+        {
+          "name": "access#direct",
+          "period": 0.0000011550020914117582,
+          "frequency": 865799298.058154,
+          "k": 1.0237179203825582
+        },
+        {
+          "name": "access#double_index",
+          "period": 0.000001153725717584123,
+          "frequency": 866757137.1243925,
+          "k": 1.022586626534544
+        },
+        {
+          "name": "access#single_index",
+          "period": 0.0000011369089915053508,
+          "frequency": 879577879.5591428,
+          "k": 1.0076813861224152
+        },
+        {
+          "name": "access#single_dot_access",
+          "period": 0.0000011392861860026278,
+          "frequency": 877742583.2824883,
+          "k": 1.0097883750406107
+        },
+        {
+          "name": "access#double_dot_access",
+          "period": 0.00000112824252503086,
+          "frequency": 886334256.8767719,
+          "k": 1
+        }
+      ]
+    }
+  ]
+}

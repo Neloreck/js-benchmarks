@@ -1,48 +1,53 @@
 import * as path from "path";
 
-import { green } from "colors";
-
 import { checkAccess, createFileHash, listDirectoryFiles } from "#/benchmark/utils/fs";
-import { printBenchmarkNotFound, printSuiteResults } from "#/benchmark/utils/print";
+import * as out from "#/benchmark/utils/print";
 import { saveResults } from "#/benchmark/utils/save";
+import { ICliArguments } from "#/benchmark/utils/types";
 import { SUITES_PATH } from "#/config/build.constants";
 
-export async function runAll(): Promise<void> {
-  const scripts: Array<string> = await listDirectoryFiles(SUITES_PATH);
+export async function run(targetBenchmarks: Array<string>, options: ICliArguments): Promise<void> {
+  const benchmarks: Array<string> = targetBenchmarks.length ? targetBenchmarks : await listDirectoryFiles(SUITES_PATH);
 
-  process.stdout.write(`Running all available benchmarks (${green(scripts.length.toString())}).\n`);
+  out.printExecutionInformation(targetBenchmarks);
 
-  for (const script of scripts) {
-    await runSingle(script);
+  for (let it = 0; it < benchmarks.length; it ++) {
+    const benchmark: string = benchmarks[it];
+    const isLast: boolean = (it === benchmarks.length -1);
+
+    await runBenchmark(benchmark, options);
+
+    if (!isLast && benchmarks.length > 1) {
+      out.printBenchmarkExecutionSeparator();
+    }
   }
 }
 
-export async function runSingle(script: string): Promise<void> {
-  const scriptName: string = script + (script.endsWith(".ts") ? "" : ".ts");
-  const scriptPath: string | undefined = path.resolve(SUITES_PATH, scriptName);
+export async function runBenchmark(benchmark: string, options: ICliArguments): Promise<void> {
+  const benchmarkName: string = benchmark + (benchmark.endsWith(".ts") ? "" : ".ts");
+  const benchmarkPath: string | undefined = path.resolve(SUITES_PATH, benchmarkName);
 
-  if (!await checkAccess(scriptPath)) {
-    return printBenchmarkNotFound(scriptName);
+  if (!await checkAccess(benchmarkPath)) {
+    return out.printBenchmarkNotFound(benchmarkPath);
   }
 
-  process.stdout.write(`Running benchmark script, target: '${green(scriptName)}'.\n`);
+  out.printBenchmarkCheckNotification(benchmarkName);
 
   try {
-    const hash: string = await createFileHash(scriptPath);
-    const { suite } = await import(scriptPath);
+    const hash: string = await createFileHash(benchmarkPath);
+    const { suite } = await import(benchmarkPath);
 
-    process.stdout.write(`Found benchmark, running: '${green(scriptPath)}'.\n\n`);
+    out.printBenchmarkStartNotification(benchmarkName);
 
-    suite.run({ "async": false });
+    await suite.run();
 
-    printSuiteResults(suite);
+    out.printSuiteResults(suite);
 
-    process.stdout.write("Benchmark run success, saving results.\n");
-
-    await saveResults(scriptName, hash, suite);
-
-    process.stdout.write("Results saved.\n");
+    if (options.save) {
+      await saveResults(benchmarkName, hash, suite);
+      out.printResultSavedNotification(benchmarkName);
+    }
   } catch (error) {
-    process.stderr.write(`Failed to run benchmark: '${error.message}'.\n`);
+    out.printBenchmarkRunError(error);
   }
 }

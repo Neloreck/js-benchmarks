@@ -1,10 +1,11 @@
-import { runAll, runSingle } from "#/benchmark/utils";
+import { Command } from "commander";
 
-const targetScript: string | undefined = process.argv[2];
+import { ICliArguments, run } from "#/benchmark/utils";
 
-if (!targetScript || targetScript === "*") {
-  runAll();
-} else {
-  runSingle(targetScript);
-}
+const program = new Command()
+  .name("benchmark-cli")
+  .arguments("[benchmarks...]")
+  .option("-s, --save", "save report of benchmarking in file", false)
+  .action((benchmarks: Array<string>, options: ICliArguments, command) => run(benchmarks, options));
 
+program.parse(process.argv);

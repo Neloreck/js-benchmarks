@@ -1,0 +1,28 @@
+{
+  "name": "array_values_iteration.ts",
+  "lastRun": 1621375595739,
+  "results": [
+    {
+      "hash": "0474ecb32b49666a8d1c809528af7015413d0122",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375595739,
+      "fastest": "object_values_for",
+      "suites": [
+        {
+          "name": "object_values_for",
+          "period": 5.75201732310735e-7,
+          "frequency": 1738520494.3363779,
+          "k": 1
+        },
+        {
+          "name": "object_values_for_of",
+          "period": 0.00000913764193778475,
+          "frequency": 109437424.53563805,
+          "k": 15.88597777874636
+        }
+      ]
+    }
+  ]
+}

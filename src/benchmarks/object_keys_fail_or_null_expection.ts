@@ -1,7 +1,11 @@
 import { Suite } from "benchmark";
 
-export const suite = new Suite()
-  .add("error_without_check", () => {
+export const description: string = `
+Comparing null exception or custom null check.
+`;
+
+export const suite: Suite = new Suite()
+  .add("Object.keys#error_without_check", () => {
     const value: Record<string, any> = null as any;
 
     try {
@@ -10,7 +14,7 @@ export const suite = new Suite()
       // Empty.
     }
   })
-  .add("error_with_check", () => {
+  .add("Object.keys#error_with_check", () => {
     const value: Record<string, any> = null as any;
 
     try {
@@ -23,7 +27,7 @@ export const suite = new Suite()
       // Empty.
     }
   })
-  .add("without_error_without_check", () => {
+  .add("Object.keys#without_error_without_check", () => {
     const value: Record<string, any> = {};
 
     try {
@@ -32,7 +36,7 @@ export const suite = new Suite()
       // Empty.
     }
   })
-  .add("without_error_with_check", () => {
+  .add("Object.keys#without_error_with_check", () => {
     const value: Record<string, any> = {};
 
     try {

@@ -1,0 +1,34 @@
+{
+  "name": "array_merge.ts",
+  "lastRun": 1621375584713,
+  "results": [
+    {
+      "hash": "143f5d1b8d3c6690096f7dc117f46e99137ffc17",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375584713,
+      "fastest": "Array.spread",
+      "suites": [
+        {
+          "name": "Array.for",
+          "period": 0.000028251062974154355,
+          "frequency": 35396898.195117675,
+          "k": 22.258793603032824
+        },
+        {
+          "name": "Array.spread",
+          "period": 0.0000012692090810485376,
+          "frequency": 787892251.1126893,
+          "k": 0.9999999999999999
+        },
+        {
+          "name": "Array.concat",
+          "period": 0.000016196440617648286,
+          "frequency": 61741960.69415154,
+          "k": 12.761050058251904
+        }
+      ]
+    }
+  ]
+}

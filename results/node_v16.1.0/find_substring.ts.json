@@ -1,0 +1,34 @@
+{
+  "name": "find_substring.ts",
+  "lastRun": 1621375666131,
+  "results": [
+    {
+      "hash": "cef2f3bfbcaee7abedd49639cc7067d5cefacd0b",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375666131,
+      "fastest": "String#indexOf",
+      "suites": [
+        {
+          "name": "RegExp#inline",
+          "period": 1.9792188224029054e-8,
+          "frequency": 50524984336.29145,
+          "k": 21.814282623197077
+        },
+        {
+          "name": "RegExp#precompiled",
+          "period": 1.7123088830519913e-8,
+          "frequency": 58400678166.05707,
+          "k": 18.872491252765187
+        },
+        {
+          "name": "String#indexOf",
+          "period": 9.073041074008206e-10,
+          "frequency": 1102166287844.4668,
+          "k": 1
+        }
+      ]
+    }
+  ]
+}

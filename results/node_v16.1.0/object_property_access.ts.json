@@ -1,0 +1,40 @@
+{
+  "name": "object_property_access.ts",
+  "lastRun": 1621375796728,
+  "results": [
+    {
+      "hash": "62b3eaed78d1c0cc1a9ed5602176fb8eef40a1c6",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375796728,
+      "fastest": "access#symbol-prop",
+      "suites": [
+        {
+          "name": "access#string-prop",
+          "period": 6.126439188925774e-9,
+          "frequency": 163226952747.30093,
+          "k": 1.0292431902838415
+        },
+        {
+          "name": "access#number-prop",
+          "period": 6.461759079460276e-9,
+          "frequency": 154756620867.93954,
+          "k": 1.0855770088783705
+        },
+        {
+          "name": "access#symbol-prop",
+          "period": 5.952372817969526e-9,
+          "frequency": 168000229585.94186,
+          "k": 1
+        },
+        {
+          "name": "access#direct-name",
+          "period": 6.197890584157112e-9,
+          "frequency": 161345216799.43402,
+          "k": 1.041247041086942
+        }
+      ]
+    }
+  ]
+}

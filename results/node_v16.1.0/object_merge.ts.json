@@ -1,0 +1,80 @@
+{
+  "name": "object_merge.ts",
+  "lastRun": 1621375917753,
+  "results": [
+    {
+      "hash": "91df78e87250a0cdf88a0738b8fc4547c16ed90b",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375774932,
+      "fastest": "Object.functionalFor",
+      "suites": [
+        {
+          "name": "Object.inlineFor",
+          "period": 0.00003527928951555334,
+          "frequency": 28345242.030997727,
+          "k": 1.0772549319438494
+        },
+        {
+          "name": "Object.functionalFor",
+          "period": 0.00003274924854778222,
+          "frequency": 30535051.775034398,
+          "k": 1
+        },
+        {
+          "name": "Object.spread",
+          "period": 0.00013690344927772346,
+          "frequency": 7304417.860001407,
+          "k": 4.1803539118760815
+        },
+        {
+          "name": "Object.assign",
+          "period": 0.00015747977340332465,
+          "frequency": 6350021.837019537,
+          "k": 4.808653034391202
+        }
+      ]
+    },
+    {
+      "hash": "70ddf69cb42343ae0da6078bfdb89bdad8c3de59",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375917753,
+      "fastest": "Object.functionalFor",
+      "suites": [
+        {
+          "name": "Object.inlineFor",
+          "period": 0.00003207689317892366,
+          "frequency": 31175089.00946357,
+          "k": 1.0238968962245623
+        },
+        {
+          "name": "Object.inlineForWithOwnProperty",
+          "period": 0.00003671702989436981,
+          "frequency": 27235318.40339134,
+          "k": 1.1720104168982115
+        },
+        {
+          "name": "Object.functionalFor",
+          "period": 0.00003132824535087615,
+          "frequency": 31920076.876314215,
+          "k": 1
+        },
+        {
+          "name": "Object.spread",
+          "period": 0.0001547331550795594,
+          "frequency": 6462739.02633103,
+          "k": 4.939094205454186
+        },
+        {
+          "name": "Object.assign",
+          "period": 0.00013825644464630744,
+          "frequency": 7232935.886339589,
+          "k": 4.4131563417560145
+        }
+      ]
+    }
+  ]
+}

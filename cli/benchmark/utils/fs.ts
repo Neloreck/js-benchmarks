@@ -11,11 +11,27 @@ export function checkAccess(path: string): Promise<boolean> {
     .catch(() => false);
 }
 
-export function createFileHash(filePath: string): Promise<string>{
+export async function ensureDirExists(path: string): Promise<void> {
+  if (!await checkAccess(path)) {
+    await createDir(path);
+  }
+}
+
+export async function ensureFileExists(path: string, data: string | Uint8Array): Promise<void> {
+  if (!await checkAccess(path)) {
+    await writeFile(path, data);
+  }
+}
+
+export function createDir(path:string): Promise<void> {
+  return fs.promises.mkdir(path);
+}
+
+export function createFileHash(path: string): Promise<string>{
   return new Promise((resolve) => {
     const hash: crypto.Hash = crypto.createHash("sha1");
 
-    fs.createReadStream(filePath)
+    fs.createReadStream(path)
       .on("data", (data) => hash.update(data))
       .on("end", () => resolve(hash.digest("hex")));
   });

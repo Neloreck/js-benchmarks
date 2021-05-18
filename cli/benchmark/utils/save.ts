@@ -3,24 +3,40 @@ import * as path from "path";
 
 import { Suite } from "benchmark";
 
-import { checkAccess, writeFile } from "#/benchmark/utils/fs";
+import { ensureDirExists, ensureFileExists, writeFile } from "#/benchmark/utils/fs";
 import { IBenchmarkResults, ISuiteDescriptor } from "#/benchmark/utils/types";
 import { RESULTS_PATH } from "#/config/build.constants";
 
+/**
+ * Save results for specific file/hash with resulting suite.
+ */
 export async function saveResults(name: string, hash: string, suite: Suite): Promise<void> {
-  const nodeVersion: string = process.version;
-  const resultPath: string = path.resolve(RESULTS_PATH, `node_${nodeVersion}.json`);
+  const resultsFolder: string = path.resolve(RESULTS_PATH, `node_${process.version}`);
+  const resultPath: string = path.resolve(resultsFolder, `${name}.json`);
 
-  /**
-   * Create results file for current node version if it does not exist.
-   */
-  if (!await checkAccess(resultPath)) {
-    await createEmptyResultsFile(resultPath);
-  }
+  await ensureDirExists(resultsFolder);
+  await ensureFileExists(resultPath, createBaseResults(name));
 
   const { default: report } = await import(resultPath);
-  const fastest = (suite.filter("fastest") as any)[0];
+
+  await writeFile(resultPath, getUpdatedReport({ report, name, hash, suite }));
+}
+
+/**
+ * Update report with provided updates.
+ */
+export function getUpdatedReport({
+  report,
+  suite,
+  hash
+}: {
+  report: IBenchmarkResults;
+  suite: Suite;
+  name: string;
+  hash: string;
+}): string {
   const now: number = Date.now();
+  const fastest = (suite.filter("fastest") as any)[0];
 
   const currentRunReport: ISuiteDescriptor = {
     hash,
@@ -38,26 +54,19 @@ export async function saveResults(name: string, hash: string, suite: Suite): Pro
   };
 
   report.lastRun = now;
-  report.benchmarks[name] = {
-    name: name,
-    lastRun: now,
-    results: Array.isArray(report.benchmarks[name]?.results)
-      ? report.benchmarks[name].results.concat([ currentRunReport ])
-      : [ currentRunReport ]
-  };
+  report.results = Array.isArray(report.results)
+    ? report.results.concat([ currentRunReport ])
+    : [ currentRunReport ];
 
-  await writeFile(resultPath, stringifyResult(report));
+  return JSON.stringify(report, null, "  ");
 }
 
-export async function createEmptyResultsFile(path: string): Promise<void> {
+export function createBaseResults(name: string): string {
   const baseResults: IBenchmarkResults = {
+    name: name,
     lastRun: 0,
-    benchmarks: {}
+    results: []
   };
 
-  await writeFile(path, stringifyResult(baseResults));
-}
-
-export function stringifyResult(result: Record<string, any>): string {
-  return JSON.stringify(result, null, "  ");
+  return JSON.stringify(baseResults, null, "  ");
 }

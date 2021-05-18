@@ -1,0 +1,40 @@
+{
+  "name": "object_keys_fail_or_null_expection.ts",
+  "lastRun": 1621375753280,
+  "results": [
+    {
+      "hash": "45fe74effa847b07653eedc5820fb063144c88d6",
+      "os": "#60-Ubuntu SMP Thu May 6 07:46:32 UTC 2021",
+      "cpu": "Intel(R) Core(TM) i7-10700K CPU @ 3.80GHz",
+      "architecture": "linux-x64",
+      "date": 1621375753280,
+      "fastest": "Object.keys#without_error_without_check",
+      "suites": [
+        {
+          "name": "Object.keys#error_without_check",
+          "period": 0.0000028631643536013592,
+          "frequency": 349263917.99415046,
+          "k": 174.99802527208521
+        },
+        {
+          "name": "Object.keys#error_with_check",
+          "period": 0.000002594825509444686,
+          "frequency": 385382368.24024755,
+          "k": 158.59702203517858
+        },
+        {
+          "name": "Object.keys#without_error_without_check",
+          "period": 1.636112378496694e-8,
+          "frequency": 61120495947.76785,
+          "k": 1
+        },
+        {
+          "name": "Object.keys#without_error_with_check",
+          "period": 1.909487376243056e-8,
+          "frequency": 52370076515.90315,
+          "k": 1.1670881544197758
+        }
+      ]
+    }
+  ]
+}

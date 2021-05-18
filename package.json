@@ -1,0 +1,34 @@
+{
+  "name": "js-benchmarks",
+  "version": "1.0.0",
+  "description": "Store management library based on context and observers.",
+  "private": true,
+  "author": "Syrotenko Igor",
+  "license": "MIT",
+  "scripts": {
+    "setup": "npx lerna bootstrap --hoist",
+    "purge": "npx lerna clean -y",
+    "typecheck": "npx tsc --noEmit",
+    "lint": "npx eslint . --ext .ts,.js",
+    "test": "jest --config cli/test/jest.config.js --detectOpenHandles",
+    "start": "npx ts-node --project ./tsconfig.json -r tsconfig-paths/register ./cli/benchmark/start.ts"
+  },
+  "dependencies": {
+    "benchmark": "^2.1.4",
+    "ts-node": "^9.1.1",
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/benchmark": "^2.1.0",
+    "@types/node": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.6",
+    "lerna": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.2.4"
+  }
+}
